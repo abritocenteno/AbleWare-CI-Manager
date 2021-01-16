@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane prefWidth="1920.0" style="-fx-background-color: #ffffff;" stylesheets="@voorraadsysteem.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="voorraadsysteem.HomeFXMLController">
+   <tabs>
+      <Tab fx:id="homeTab" closable="false" style="-fx-background-color: #ffffff;" text="Home">
+         <content>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="985.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" stylesheets="@voorraadsysteem.css">
+               <center>
+                  <ImageView fitHeight="440.0" fitWidth="1051.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                     <effect>
+                        <Reflection fraction="0.52" topOffset="-10.0" topOpacity="0.26" />
+                     </effect>
+                     <BorderPane.margin>
+                        <Insets right="80.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </center>
+               <bottom>
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="2000.0" style="-fx-background-color: #00a49b;" text="Abel Brito - 2019" textFill="WHITE" visible="false" BorderPane.alignment="CENTER" />
+               </bottom>
+               <left>
+                  <JFXButton fx:id="logoutBtn" onAction="#Logout" style="-fx-background-color: #00a49b;" text="Uitloggen" textFill="WHITE" BorderPane.alignment="BOTTOM_LEFT">
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </BorderPane.margin>
+                     <font>
+                        <Font name="Barlow Medium" size="18.0" />
+                     </font>
+                  </JFXButton>
+               </left>
+            </BorderPane>
+         </content>
+      </Tab>
+      <Tab fx:id="zoekTab" closable="false" style="-fx-background-color: #ffffff;" text="Zoeken">
+        <content>
+          <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="985.0" prefWidth="1920.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="-40.0" layoutY="943.0" prefHeight="42.0" prefWidth="2000.0" style="-fx-background-color: #00a49b;" text="Abel Brito - 2019" textFill="WHITE" visible="false" />
+                  <TabPane prefHeight="938.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab fx:id="pickZtab" closable="false" style="-fx-background-color: #ffffff;" text="Pick">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="985.0" prefWidth="1920.0">
+                                 <children>
+                                    <JFXButton fx:id="resetbutton" buttonType="RAISED" layoutX="925.0" layoutY="823.0" onAction="#ResetField" style="-fx-background-color: #00a49b;" text="Reset" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXButton>
+                                    <JFXTextField fx:id="searchfield" focusColor="#00a49b" labelFloat="true" layoutX="504.0" layoutY="823.0" onKeyReleased="#Filter" promptText="Voer je zoekterm in" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXTextField>
+                                    <TableView fx:id="searchTable" layoutX="504.0" layoutY="98.0" onMouseClicked="#SearchPTableMouseClicked" prefHeight="709.0" prefWidth="912.0" styleClass="table-row-cell" stylesheets="@voorraadsysteem.css" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="col_id" prefWidth="75.0" resizable="false" text="ID" visible="false" />
+                                          <TableColumn fx:id="col_locatie" prefWidth="200.0" resizable="false" text="Locatie" />
+                                          <TableColumn fx:id="col_artikelcode" prefWidth="187.0" resizable="false" text="Artikelcode" />
+                                          <TableColumn fx:id="col_omschrijving" prefWidth="297.0" resizable="false" text="Omschrijving" />
+                                          <TableColumn fx:id="col_eenheid" prefWidth="78.0" resizable="false" text="Eenheid" />
+                                          <TableColumn fx:id="col_hal" prefWidth="138.0" resizable="false" text="Hal" />
+                                          <TableColumn fx:id="col_oescode1" prefWidth="98.0" resizable="false" text="Code" visible="false" />
+                                          <TableColumn fx:id="col_aantalP1" prefWidth="120.0" text="Aantal" visible="false" />
+                                          <TableColumn fx:id="col_initiaalP1" minWidth="0.0" prefWidth="124.0" text="Initiaal" visible="false" />
+                                          <TableColumn fx:id="col_max1" prefWidth="163.0" text="Max" visible="false" />
+                                       </columns>
+                                       <effect>
+                                          <DropShadow color="#00a49b" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                    </TableView>
+                                    <Label layoutX="901.0" layoutY="44.0" text="Picklocaties" textFill="#00a49b">
+                                       <font>
+                                          <Font name="Barlow Medium" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="pickZfilterDesc" focusColor="#00a49b" labelFloat="true" layoutX="713.0" layoutY="823.0" onKeyReleased="#FilterDesc" promptText="Zoek op omschrijving" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextArea fx:id="clickDescP" focusColor="#00a49b" labelFloat="true" layoutX="35.0" layoutY="98.0" prefHeight="170.0" prefWidth="418.0" promptText="Omschrijving" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab fx:id="bulkZtab" closable="false" style="-fx-background-color: #ffffff;" text="Bulk">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXButton fx:id="resetbutton1" buttonType="RAISED" layoutX="783.0" layoutY="823.0" onAction="#ResetFieldB" style="-fx-background-color: #00a49b;" text="Reset" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXButton>
+                                    <JFXTextField fx:id="searchfield1" focusColor="#00a49b" labelFloat="true" layoutX="354.0" layoutY="823.0" onKeyReleased="#FilterB" promptText="Voer je zoekterm in" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXTextField>
+                                    <TableView fx:id="bulkTable2" layoutX="354.0" layoutY="98.0" onMouseClicked="#SearchBTableMouseClicked" prefHeight="709.0" prefWidth="1449.0" styleClass="table-row-cell" stylesheets="@voorraadsysteem.css" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="col_id1" minWidth="0.0" prefWidth="0.0" text="ID" />
+                                          <TableColumn fx:id="col_artikelcode1" prefWidth="186.00003051757812" text="Artikelcode" />
+                                          <TableColumn fx:id="col_locatie1" prefWidth="180.0" resizable="false" text="Locatie" />
+                                          <TableColumn fx:id="col_omschrijving1" prefWidth="330.0" resizable="false" text="Omschrijving" />
+                                          <TableColumn fx:id="col_aantal1" prefWidth="84.0" resizable="false" text="Aantal" />
+                                          <TableColumn fx:id="col_eenheid1" prefWidth="91.0" resizable="false" text="Eenheid" />
+                                          <TableColumn fx:id="col_initiaal1" prefWidth="128.0" resizable="false" text="Initiaal" />
+                                          <TableColumn fx:id="col_datum1" prefWidth="168.0" resizable="false" text="Datum" />
+                                          <TableColumn fx:id="col_lenummer" prefWidth="281.0" resizable="false" text="LE" />
+                                       </columns>
+                                       <effect>
+                                          <DropShadow color="#00a49b" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                    </TableView>
+                                    <Label layoutX="901.0" layoutY="45.0" text="Bulklocaties" textFill="#00a49b">
+                                       <font>
+                                          <Font name="Barlow Medium" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="bulkZfilterDesc" focusColor="#00a49b" labelFloat="true" layoutX="572.0" layoutY="823.0" onKeyReleased="#FilterBDesc" promptText="Zoek op omschrijving" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextArea fx:id="clickDescB" focusColor="#00a49b" labelFloat="true" layoutX="27.0" layoutY="98.0" prefHeight="170.0" prefWidth="303.0" promptText="Omschrijving" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="boekTab" closable="false" style="-fx-background-color: #ffffff;" text="In-/Afboeken">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="-40.0" layoutY="943.0" prefHeight="42.0" prefWidth="2000.0" style="-fx-background-color: #00a49b;" text="Abel Brito - 2019" textFill="WHITE" visible="false" />
+                  <TabPane prefHeight="939.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab fx:id="bulkBtab" closable="false" style="-fx-background-color: #ffffff;" text="Bulklocaties">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="bulkTable21" layoutX="455.0" layoutY="27.0" onMouseClicked="#BulkTableMouseClicked" prefHeight="790.0" prefWidth="1422.0" styleClass="table-row-cell" stylesheets="@voorraadsysteem.css" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="col_id11" minWidth="0.0" prefWidth="0.0" text="ID" />
+                                          <TableColumn fx:id="col_artikelcode11" prefWidth="210.0" text="Artikelcode" />
+                                          <TableColumn fx:id="col_locatie11" prefWidth="179.0" resizable="false" text="Locatie" />
+                                          <TableColumn fx:id="col_omschrijving11" prefWidth="345.0" resizable="false" text="Omschrijving" />
+                                          <TableColumn fx:id="col_aantal11" prefWidth="99.0" resizable="false" text="Aantal" />
+                                          <TableColumn fx:id="col_eenheid11" prefWidth="107.0" resizable="false" text="Eenheid" />
+                                          <TableColumn fx:id="col_initiaal11" prefWidth="82.0" resizable="false" text="Initiaal" />
+                                          <TableColumn fx:id="col_datum11" prefWidth="191.0" resizable="false" text="Datum" />
+                                          <TableColumn fx:id="col_lebulk" prefWidth="191.0" resizable="false" text="LE" />
+                                       </columns>
+                                       <effect>
+                                          <DropShadow color="#00a49b" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                    </TableView>
+                                    <JFXTextField fx:id="bulkEenheidTxt" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="538.0" promptText="Eenheid" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="bulkArticleCombo" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="114.0" layoutY="90.0" onAction="#bulkArticleComboContextMenu" prefHeight="47.0" prefWidth="250.0" promptText="Artikelcode" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXTextArea fx:id="bulkDescTxt" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="190.0" prefHeight="100.0" prefWidth="313.0" promptText="Omschrijving" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                    <JFXComboBox fx:id="bulkLocationCombo" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="348.0" prefHeight="47.0" prefWidth="250.0" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXButton fx:id="bulkAddBtn" buttonType="RAISED" layoutX="109.0" layoutY="742.0" onAction="#AddBulk" style="-fx-background-color: #00a49b;" text="Toevoegen" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="bulkModBtn" buttonType="RAISED" layoutX="108.0" layoutY="796.0" onAction="#ModifyBulk" style="-fx-background-color: #3C3C3B;" text="Aanpassen " textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="bulkFilterResetBtn" buttonType="RAISED" layoutX="1099.0" layoutY="831.0" onAction="#ResetFieldBulk" style="-fx-background-color: #00a49b;" text="Reset Filter" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="bulkSearchFilter" focusColor="#00a49b" labelFloat="true" layoutX="667.0" layoutY="831.0" onKeyReleased="#FilterBulk" promptText="Voer je zoekterm in" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton fx:id="bulkDelBtn" buttonType="RAISED" layoutX="239.0" layoutY="796.0" onAction="#DeleteBulk" style="-fx-background-color: #D14236;" text="Verwijder" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="bulkResetBtn" buttonType="RAISED" layoutX="108.0" layoutY="841.0" onAction="#ClickClearAllBulkFields" style="-fx-background-color: #006FA1;" text="Reset" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="bulkAantalTxt" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="453.0" promptText="Aantal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="bulkInitiaalTxt" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="603.0" promptText="Initiaal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="bulkIDtxt" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="114.0" layoutY="27.0" prefHeight="27.0" prefWidth="66.0" promptText="ID" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="13.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="autocompleteBulkArt" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="117.0" onAction="#bulkArticleComboContextMenu" promptText="Artikelcode" stylesheets="@voorraadsysteem.css" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="autocompleteBulkLoc" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="364.0" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton fx:id="bulkModEmpty" buttonType="RAISED" layoutX="239.0" layoutY="742.0" onAction="#EmptyBulk" style="-fx-background-color: #D26402;" text="Leegboeken" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="bulkFilterBdesc" focusColor="#00a49b" labelFloat="true" layoutX="882.0" layoutY="831.0" onKeyReleased="#FilterBulkDesc" promptText="Zoek op omschrijving" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="leTextField" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="668.0" promptText="LE Nummer" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab fx:id="bulkRtab" closable="false" style="-fx-background-color: #ffffff;" text="Recent">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="recentTable" layoutX="334.0" layoutY="27.0" onMouseClicked="#RecentTableMouseClicked" prefHeight="790.0" prefWidth="1213.0" styleClass="table-row-cell" stylesheets="@voorraadsysteem.css" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="col_idR" minWidth="0.0" prefWidth="0.0" text="ID" />
+                                          <TableColumn fx:id="col_artikelcodeR" prefWidth="210.0" text="Artikelcode" />
+                                          <TableColumn fx:id="col_locatieR" prefWidth="179.0" resizable="false" text="Locatie" />
+                                          <TableColumn fx:id="col_omschrijvingR" prefWidth="345.0" resizable="false" text="Omschrijving" />
+                                          <TableColumn fx:id="col_aantalR" prefWidth="99.0" resizable="false" text="Aantal" />
+                                          <TableColumn fx:id="col_eenheidR" prefWidth="107.0" resizable="false" text="Eenheid" />
+                                          <TableColumn fx:id="col_initiaalR" prefWidth="82.0" resizable="false" text="Initiaal" />
+                                       </columns>
+                                       <effect>
+                                          <DropShadow color="#00a49b" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                    </TableView>
+                                    <JFXTextField fx:id="bulkEenheidTxt1" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="538.0" promptText="Eenheid" unFocusColor="#002724" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="bulkArticleCombo1" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="114.0" layoutY="90.0" onAction="#bulkArticleComboContextMenu" prefHeight="47.0" prefWidth="250.0" promptText="Artikelcode" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXTextArea fx:id="bulkDescTxt1" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="190.0" prefHeight="100.0" prefWidth="313.0" promptText="Omschrijving" unFocusColor="#002724" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                    <JFXComboBox fx:id="bulkLocationCombo1" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="348.0" prefHeight="47.0" prefWidth="250.0" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXButton fx:id="bulkAddBtn1" buttonType="RAISED" layoutX="109.0" layoutY="742.0" onAction="#AddBulk" style="-fx-background-color: #00a49b;" text="Toevoegen" textFill="WHITE" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="bulkModBtn1" buttonType="RAISED" layoutX="347.0" layoutY="742.0" onAction="#ModifyBulk" style="-fx-background-color: #00a49b;" text="Aanpassen " textFill="WHITE" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="resetRecent" buttonType="RAISED" layoutX="537.0" layoutY="828.0" onAction="#ResetFieldRecents" style="-fx-background-color: #00a49b;" text="Reset" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="zoekRecentsTxt" focusColor="#00a49b" labelFloat="true" layoutX="334.0" layoutY="828.0" onKeyReleased="#FilterRecent" promptText="Voer je zoekterm in" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton fx:id="cleaRecentsBtn" buttonType="RAISED" layoutX="651.0" layoutY="828.0" onAction="#DeleteRecents" style="-fx-background-color: #00a49b;" text="Clear" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="bulkResetBtn1" buttonType="RAISED" layoutX="478.0" layoutY="742.0" onAction="#ClickClearAllBulkFields" style="-fx-background-color: #00a49b;" text="Reset" textFill="WHITE" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="bulkAantalTxt1" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="453.0" promptText="Aantal" unFocusColor="#002724" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="bulkInitiaalTxt1" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="632.0" promptText="Initiaal" unFocusColor="#002724" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="bulkIDtxt1" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="114.0" layoutY="27.0" prefHeight="27.0" prefWidth="66.0" promptText="ID" unFocusColor="#002724" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="13.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="autocompleteBulkArt1" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="117.0" promptText="Artikelcode" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="autocompleteBulkLoc1" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="364.0" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                      <Tab fx:id="pickBtab" closable="false" disable="true" style="-fx-background-color: #ffffff;" text="Picklocaties">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@voorraadsysteem.css">
+                                 <children>
+                                    <TableView fx:id="searchTable1" layoutX="610.0" layoutY="28.0" onMouseClicked="#PickTableMouseClicked" prefHeight="790.0" prefWidth="1293.0" styleClass="table-row-cell" stylesheets="@voorraadsysteem.css" tableMenuButtonVisible="true">
+                                       <effect>
+                                          <DropShadow color="#00a49b" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                       <columns>
+                                          <TableColumn fx:id="col_pickId" prefWidth="61.0" text="ID" visible="false" />
+                                          <TableColumn fx:id="col_pickLoc" prefWidth="188.0" text="Locatie" />
+                                          <TableColumn fx:id="col_pickArt" prefWidth="219.0" text="Artikelcode" />
+                                          <TableColumn fx:id="col_pickDesc" prefWidth="215.0" text="Omschrijving" />
+                                          <TableColumn fx:id="col_pickEenh" prefWidth="129.0" text="Eenheid" />
+                                          <TableColumn fx:id="col_pickCode" prefWidth="103.0" text="Code" visible="false" />
+                                          <TableColumn fx:id="col_pickHal" prefWidth="167.0" text="Hal" />
+                                          <TableColumn fx:id="col_pickAant" prefWidth="118.0" text="Aantal" />
+                                          <TableColumn fx:id="col_pickInit" prefWidth="137.0" text="Initiaal" />
+                                          <TableColumn fx:id="col_pickMax" prefWidth="120.0" text="Max" />
+                                       </columns>
+                                    </TableView>
+                                    <JFXTextField fx:id="pickEenheidTxt" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="343.0" promptText="Eenheid" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font></JFXTextField>
+                                    <JFXTextArea fx:id="pickDescTxt" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="108.0" layoutY="189.0" prefHeight="100.0" prefWidth="313.0" promptText="Omschrijving" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font></JFXTextArea>
+                                    <JFXComboBox fx:id="pickLocationCombo" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="426.0" prefHeight="47.0" prefWidth="250.0" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXComboBox fx:id="pickHalCombo" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="514.0" prefHeight="47.0" prefWidth="210.0" promptText="Hal" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXTextField fx:id="oesTxt" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="621.0" promptText="OES Code" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font></JFXTextField>
+                                    <JFXButton fx:id="pickAddBtn" buttonType="RAISED" layoutX="108.0" layoutY="833.0" onAction="#AddPick" style="-fx-background-color: #00a49b;" text="Toevoegen" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXButton>
+                                    <JFXButton fx:id="pickDelBtn" buttonType="RAISED" layoutX="234.0" layoutY="833.0" onAction="#DeletePick" style="-fx-background-color: #D14236;" text="Verwijder" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXButton>
+                                    <JFXButton fx:id="pickModifyBtn" buttonType="RAISED" layoutX="348.0" layoutY="833.0" onAction="#ModifyPck" style="-fx-background-color: #3C3C3B;" text="Aanpassen " textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXButton>
+                                    <JFXButton fx:id="pickResetBtn" buttonType="RAISED" layoutX="480.0" layoutY="833.0" onAction="#ClickClearAllFields" style="-fx-background-color: #006FA1;" text="Reset" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXButton>
+                                    <JFXButton fx:id="resetbutton2" buttonType="RAISED" layoutX="1064.0" layoutY="833.0" onAction="#ResetFieldPick" style="-fx-background-color: #00a49b;" text="Reset Filter" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXButton>
+                                    <JFXTextField fx:id="searchfield2" focusColor="#00a49b" labelFloat="true" layoutX="610.0" layoutY="833.0" onKeyReleased="#FilterPick" promptText="Voer je zoekterm in" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font></JFXTextField>
+                                    <JFXTextField fx:id="pickAantalTxt" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="702.0" promptText="Aantal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickInitiaalTxt" focusColor="#00a49b" labelFloat="true" layoutX="376.0" layoutY="778.0" promptText="Initiaal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickIdTxt" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="28.0" prefHeight="27.0" prefWidth="66.0" promptText="ID" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="13.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="pickArticleCombo" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="97.0" onAction="#pickArticleComboContextMenu" prefHeight="47.0" prefWidth="250.0" promptText="Artkelcode" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXTextField fx:id="autocompleteTf" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="101.0" onAction="#pickArticleComboContextMenu" promptText="Artikelcode" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font></JFXTextField>
+                                    <JFXTextField fx:id="autocompleteLoc" focusColor="#00a49b" labelFloat="true" layoutX="108.0" layoutY="433.0" onAction="#PickLocationContextMenu" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="autocompleteHal" focusColor="#00a49b" labelFloat="true" layoutX="108.0" layoutY="531.0" onAction="#halContextMenu" promptText="Hal" stylesheets="@voorraadsysteem.css" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="maxAantalTxt" focusColor="#00a49b" labelFloat="true" layoutX="108.0" layoutY="778.0" promptText="Max Aantal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickFilterBdesc" focusColor="#00a49b" labelFloat="true" layoutX="837.0" layoutY="833.0" onKeyReleased="#FilterPickDesc" promptText="Zoek op omschrijving" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="historyTab" closable="false" style="-fx-background-color: #ffffff;" text="Geschiedenis">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="-40.0" layoutY="943.0" prefHeight="42.0" prefWidth="2000.0" style="-fx-background-color: #00a49b;" text="Abel Brito - 2019" textFill="WHITE" visible="false" />
+                  <TabPane prefHeight="939.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE">
+                     <tabs>
+                        <Tab fx:id="pickHtab" closable="false" style="-fx-background-color: #ffffff;" text="Picklocaties">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#PickHistoryTableMouseClicked" prefHeight="180.0" prefWidth="200.0" stylesheets="@voorraadsysteem.css">
+                                 <children>
+                                    <TableView fx:id="pickHistoryTbl" layoutX="610.0" layoutY="28.0" onMouseClicked="#PickHistoryTableMouseClicked" prefHeight="790.0" prefWidth="1293.0" styleClass="table-row-cell" stylesheets="@voorraadsysteem.css" tableMenuButtonVisible="true">
+                                       <effect>
+                                          <DropShadow color="#00a49b" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                       <columns>
+                                          <TableColumn fx:id="col_pickIdH" prefWidth="61.0" text="ID" visible="false" />
+                                          <TableColumn fx:id="col_pickLocH" prefWidth="188.0" text="Locatie" />
+                                          <TableColumn fx:id="col_pickArtH" prefWidth="153.0" text="Artikelcode" />
+                                          <TableColumn fx:id="col_pickDescH" prefWidth="179.0" text="Omschrijving" />
+                                          <TableColumn fx:id="col_pickEenhH" prefWidth="231.0" text="Eenheid" />
+                                          <TableColumn fx:id="col_pickCodeH" prefWidth="103.0" text="Code" visible="false" />
+                                          <TableColumn fx:id="col_pickHalH" prefWidth="106.0" text="Hal" />
+                                          <TableColumn fx:id="col_pickAantH" prefWidth="140.0" text="Aantal" />
+                                          <TableColumn fx:id="col_pickInitH" prefWidth="71.0" text="Initiaal" />
+                                          <TableColumn fx:id="col_pickMaxH" minWidth="0.0" prefWidth="82.0" text="Max" />
+                                          <TableColumn fx:id="col_DatumH" minWidth="0.0" prefWidth="146.0" text="Datum" />
+                                       </columns>
+                                    </TableView>
+                                    <JFXTextField fx:id="pickHistoryEenh" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="343.0" promptText="Eenheid" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextArea fx:id="pickHistoryDesc" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="108.0" layoutY="189.0" prefHeight="100.0" prefWidth="313.0" promptText="Omschrijving" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                    <JFXComboBox fx:id="pickLocationCombo1" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="426.0" prefHeight="47.0" prefWidth="250.0" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXComboBox fx:id="pickHalCombo1" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="514.0" prefHeight="47.0" prefWidth="210.0" promptText="Hal" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXTextField fx:id="pickHistoryOes" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="621.0" promptText="OES Code" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton fx:id="pickHistoryRestore" buttonType="RAISED" layoutX="108.0" layoutY="833.0" onAction="#RestorePickHistory" style="-fx-background-color: #00a49b;" text="Herstellen" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="pickHistoryClear" buttonType="RAISED" layoutX="234.0" layoutY="833.0" onAction="#DeletePick" style="-fx-background-color: #00a49b;" text="Geschiedenis Wissen" textFill="WHITE" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="pickHistoryReset" buttonType="RAISED" layoutX="247.0" layoutY="833.0" onAction="#ClearHistoryPickFields" style="-fx-background-color: #00a49b;" text="Reset" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="pickHistoryResetFilter" buttonType="RAISED" layoutX="840.0" layoutY="833.0" onAction="#ResetHistoryFilter" style="-fx-background-color: #00a49b;" text="Reset Filter" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="pickHistoryFilter" focusColor="#00a49b" labelFloat="true" layoutX="610.0" layoutY="833.0" onKeyReleased="#FilterPickHistory" promptText="Voer je zoekterm in" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickHistoryAant" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="702.0" promptText="Aantal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickHistoryInit" focusColor="#00a49b" labelFloat="true" layoutX="376.0" layoutY="778.0" promptText="Initiaal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickHistoryId" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="28.0" prefHeight="27.0" prefWidth="66.0" promptText="ID" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="13.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="pickArticleCombo1" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="97.0" onAction="#pickArticleComboContextMenu" prefHeight="47.0" prefWidth="250.0" promptText="Artkelcode" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXTextField fx:id="pickHistoryArt" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="101.0" promptText="Artikelcode" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickHistoryLoc" focusColor="#00a49b" labelFloat="true" layoutX="108.0" layoutY="433.0" onAction="#PickLocationContextMenu" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickHistoryHal" focusColor="#00a49b" labelFloat="true" layoutX="108.0" layoutY="531.0" onAction="#halContextMenu" promptText="Hal" stylesheets="@voorraadsysteem.css" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="pickHistoryMax" focusColor="#00a49b" labelFloat="true" layoutX="108.0" layoutY="778.0" promptText="Max Aantal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="bulkHtab" closable="false" style="-fx-background-color: #ffffff;" text="Bulklocaties">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="bulkHistoryTbl" layoutX="667.0" layoutY="27.0" onMouseClicked="#BulkHistoryTableMouseClicked" prefHeight="790.0" prefWidth="1213.0" styleClass="table-row-cell" stylesheets="@voorraadsysteem.css" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="col_BulkIdH" minWidth="0.0" prefWidth="0.0" text="ID" />
+                                          <TableColumn fx:id="col_BulkArtH" prefWidth="210.0" text="Artikelcode" />
+                                          <TableColumn fx:id="col_BulkLocH" prefWidth="179.0" resizable="false" text="Locatie" />
+                                          <TableColumn fx:id="col_BulkDescH" prefWidth="345.0" resizable="false" text="Omschrijving" />
+                                          <TableColumn fx:id="col_BulkAantH" prefWidth="99.0" resizable="false" text="Aantal" />
+                                          <TableColumn fx:id="col_BulkEenhH" prefWidth="107.0" resizable="false" text="Eenheid" />
+                                          <TableColumn fx:id="col_BulkInitH" prefWidth="82.0" resizable="false" text="Initiaal" />
+                                          <TableColumn fx:id="col_BulkDatumH" prefWidth="191.0" resizable="false" text="Datum" />
+                                       </columns>
+                                       <effect>
+                                          <DropShadow color="#00a49b" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                    </TableView>
+                                    <JFXTextField fx:id="bulkEenheidH" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="538.0" promptText="Eenheid" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="bulkArticleCombo1" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="114.0" layoutY="90.0" onAction="#bulkArticleComboContextMenu" prefHeight="47.0" prefWidth="250.0" promptText="Artikelcode" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXTextArea fx:id="bulkDescH" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="190.0" prefHeight="100.0" prefWidth="313.0" promptText="Omschrijving" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextArea>
+                                    <JFXComboBox fx:id="bulkLocationCombo1" editable="true" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="348.0" prefHeight="47.0" prefWidth="250.0" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724" visible="false" />
+                                    <JFXButton fx:id="bulkRestoreH" buttonType="RAISED" layoutX="109.0" layoutY="742.0" onAction="#RestoreBulk" style="-fx-background-color: #00a49b;" text="Herstellen" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="bulkFilterResetBtn1" buttonType="RAISED" layoutX="870.0" layoutY="831.0" onAction="#ResetBulkHistoryFilter" style="-fx-background-color: #00a49b;" text="Reset Filter" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="bulkSearchFilter1" focusColor="#00a49b" labelFloat="true" layoutX="667.0" layoutY="831.0" onKeyReleased="#FilterBulkHistory" promptText="Voer je zoekterm in" style="-fx-background-color: #ffffff;" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton fx:id="bulkDelH" buttonType="RAISED" layoutX="234.0" layoutY="742.0" style="-fx-background-color: #00a49b;" text="Geschiedenis Wissen" textFill="WHITE" visible="false">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="bulkResetBtn1" buttonType="RAISED" layoutX="239.0" layoutY="742.0" onAction="#ClearBulkHistoryFields" style="-fx-background-color: #00a49b;" text="Reset" textFill="WHITE">
+                                       <font>
+                                          <Font name="Barlow Medium" size="18.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="bulkAantalH" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="453.0" promptText="Aantal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="bulkInitiaalH" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="632.0" promptText="Initiaal" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="bulkIDH" editable="false" focusColor="#00a49b" labelFloat="true" layoutX="114.0" layoutY="27.0" prefHeight="27.0" prefWidth="66.0" promptText="ID" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="13.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="bulkArtH" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="117.0" promptText="Artikelcode" stylesheets="@voorraadsysteem.css" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="bulkLocH" focusColor="#00a49b" labelFloat="true" layoutX="109.0" layoutY="364.0" promptText="Locatie" stylesheets="@voorraadsysteem.css" unFocusColor="#002724">
+                                       <font>
+                                          <Font name="Barlow Medium" size="20.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

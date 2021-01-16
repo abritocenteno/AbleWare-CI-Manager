@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="1020.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="voorraadsysteem.MainWindowFXMLController">
+   <center>
+      <TabPane minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab text="Shipments">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="1080.0" prefWidth="1920.0">
+                           <center>
+                              <TableView fx:id="table_main" onMouseClicked="#TableMainMouseClicked" prefHeight="600.0" prefWidth="1373.0" BorderPane.alignment="CENTER">
+                                 <columns>
+                                    <TableColumn fx:id="col_ID" prefWidth="75.0" text="ID" visible="false" />
+                                    <TableColumn fx:id="col_shipnr" prefWidth="149.99996948242188" text="SHIPMENTNUMBER" />
+                                    <TableColumn fx:id="col_shipdate" prefWidth="149.0" text="SHIPMENTDATE" />
+                                    <TableColumn fx:id="col_dim" prefWidth="109.0" text="DIMENSIONS" />
+                                    <TableColumn fx:id="col_sender" prefWidth="75.0" text="SENDER" />
+                                    <TableColumn fx:id="col_sendaddr" prefWidth="219.0" text="SENDERADDRESS" />
+                                    <TableColumn fx:id="col_recipient" prefWidth="114.0" text="RECIPIENT" />
+                                    <TableColumn fx:id="col_recaddr" prefWidth="197.0" text="RECIPIENTADDRESS" />
+                                    <TableColumn fx:id="col_location" prefWidth="141.0" text="LOCATION" />
+                                    <TableColumn fx:id="col_handler" prefWidth="140.0" text="HANDLER" />
+                                    <TableColumn fx:id="col_logged" prefWidth="192.0" text="LOGGED" />
+                                 </columns>
+                              </TableView>
+                           </center>
+                           <left>
+                              <VBox prefHeight="734.0" prefWidth="268.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <JFXTextField fx:id="idTxt" focusColor="#2433a2" labelFloat="true" maxWidth="26.0" prefHeight="26.0" prefWidth="26.0" promptText="ID">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="shipNrTxt" focusColor="#2433a2" labelFloat="true" promptText="Shipment Number">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXDatePicker fx:id="shipDate" defaultColor="#5495ff" promptText="Shipment Date" showWeekNumbers="true">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXDatePicker>
+                                    <JFXTextArea fx:id="dimTxt" focusColor="#2433a2" labelFloat="true" prefHeight="73.0" prefWidth="334.0" promptText="Dimensions (LxWxH)">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextArea>
+                                    <JFXTextArea fx:id="sendTxt" focusColor="#2433a2" labelFloat="true" prefHeight="73.0" prefWidth="334.0" promptText="Sender Name">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextArea>
+                                    <JFXTextArea fx:id="sendAddrTxt" focusColor="#2433a2" labelFloat="true" prefHeight="73.0" prefWidth="334.0" promptText="Sender Address">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextArea>
+                                    <JFXTextArea fx:id="recTxt" focusColor="#2433a2" labelFloat="true" prefHeight="73.0" prefWidth="334.0" promptText="Recipient Name">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextArea>
+                                    <JFXTextArea fx:id="recAddr" focusColor="#2433a2" labelFloat="true" prefHeight="73.0" prefWidth="334.0" promptText="Recipient Address">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextArea>
+                                    <JFXTextField fx:id="locTxt" focusColor="#2433a2" labelFloat="true" promptText="Warehouse Location">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="handleTxt" focusColor="#2433a2" labelFloat="true" promptText="Shipment Handler">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="logTxt" focusColor="#2433a2" labelFloat="true" promptText="Logged By">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                 </children>
+                              </VBox>
+                           </left>
+                           <right>
+                              <VBox prefHeight="980.0" prefWidth="165.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <JFXButton fx:id="addBtn" buttonType="RAISED" onAction="#AddNewShipment" prefHeight="26.0" prefWidth="230.0" style="-fx-background-color: #5495FF;" text="Add Shipment" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" right="5.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="editBtn" buttonType="RAISED" onAction="#EditShipment" prefHeight="26.0" prefWidth="217.0" style="-fx-background-color: #5495FF;" text="Edit Shipment" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="deleteBtn" buttonType="RAISED" onAction="#DeleteShipment" prefHeight="26.0" prefWidth="216.0" style="-fx-background-color: #5495FF;" text="Delete Shipment" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="loadBtn" buttonType="RAISED" onAction="#LoadingList" prefHeight="26.0" prefWidth="223.0" style="-fx-background-color: #5495FF;" text="Send to Loading List" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </right>
+                           <bottom>
+                              <HBox prefHeight="194.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <JFXTextField fx:id="searchFilter" focusColor="#2433a2" labelFloat="true" onKeyPressed="#Filter" promptText="Search">
+                                       <HBox.margin>
+                                          <Insets left="270.0" top="20.0" />
+                                       </HBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="loadNumber" focusColor="#2433a2" labelFloat="true" promptText="Assign Loading Number">
+                                       <HBox.margin>
+                                          <Insets left="330.0" top="20.0" />
+                                       </HBox.margin>
+                                    </JFXTextField>
+                                 </children>
+                              </HBox>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Loading List">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="1080.0" prefWidth="1920.0">
+                           <left>
+                              <VBox prefHeight="734.0" prefWidth="268.0" BorderPane.alignment="CENTER" />
+                           </left>
+                           <right>
+                              <VBox prefHeight="980.0" prefWidth="165.0" BorderPane.alignment="CENTER" />
+                           </right>
+                           <bottom>
+                              <HBox prefHeight="194.0" prefWidth="1920.0" BorderPane.alignment="CENTER" />
+                           </bottom>
+                           <center>
+                              <TableView fx:id="table_load" onMouseClicked="#TableLoadMouseClicked" prefHeight="600.0" prefWidth="1498.0" BorderPane.alignment="CENTER">
+                                 <columns>
+                                    <TableColumn fx:id="col_ID1" prefWidth="75.0" text="ID" visible="false" />
+                                    <TableColumn fx:id="col_shipnr1" prefWidth="149.99996948242188" text="SHIPMENTNUMBER" />
+                                    <TableColumn fx:id="col_shipdate1" prefWidth="149.0" text="SHIPMENTDATE" />
+                                    <TableColumn fx:id="col_dim1" prefWidth="109.0" text="DIMENSIONS" />
+                                    <TableColumn fx:id="col_sender1" prefWidth="75.0" text="SENDER" />
+                                    <TableColumn fx:id="col_sendaddr1" prefWidth="219.0" text="SENDERADDRESS" />
+                                    <TableColumn fx:id="col_recipient1" prefWidth="114.0" text="RECIPIENT" />
+                                    <TableColumn fx:id="col_recaddr1" prefWidth="197.0" text="RECIPIENTADDRESS" />
+                                    <TableColumn fx:id="col_location1" prefWidth="115.0" text="LOCATION" />
+                                    <TableColumn fx:id="col_handler1" prefWidth="87.0" text="HANDLER" />
+                                    <TableColumn fx:id="col_logged1" prefWidth="106.0" text="LOGGED" />
+                                    <TableColumn fx:id="col_load" prefWidth="165.0" text="LOADINGNUMBER" />
+                                 </columns>
+                              </TableView>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>

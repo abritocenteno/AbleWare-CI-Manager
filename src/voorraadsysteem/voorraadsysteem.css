@@ -1,0 +1,101 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 29, 2019, 4:42:17 PM
+    Author     : abel
+*/
+
+
+/*.auto-complete-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected {
+    -fx-background:   #00a49b;
+    -fx-background-color:  #00a49b;
+}*/
+
+/*.auto-complete-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover,*/
+
+/*.tab-pane > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-text-fill: #00a49b;
+}*/
+
+.tab:selected .tab-label{
+    -fx-text-fill: #2433A2;
+    -fx-font-weight:bold;
+}
+.auto-complete-popup:selected {
+ 
+    -fx-background-color: #00a49b;
+    -fx-font-size: 18pt;
+    -fx-font-family: "Barlow";
+}
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:hover 
+{
+    -fx-background: #00A49B;
+    -fx-background-color: #00A49B;
+    -fx-text-fill: -fx-selection-bar-text; 
+}
+
+.jfx-text-field {
+    -fx-highlight-fill: #5495FF;
+}
+
+.jfx-password-field {
+    -fx-highlight-fill: #5495FF;
+}
+
+#pickArticleCombo {
+    -fx-font-size: 18pt;
+    -fx-font-family: "Barlow";
+}
+
+#pickHalCombo {
+    -fx-font-size: 18pt;
+    -fx-font-family: "Barlow";
+}
+
+#pickLocationCombo {
+    -fx-font-size: 18pt;
+    -fx-font-family: "Barlow";
+}
+
+#bulkLocationCombo {
+    -fx-font-size: 18pt;
+    -fx-font-family: "Barlow";
+}
+
+#bulkArticleCombo {
+    -fx-font-size: 18pt;
+    -fx-font-family: "Barlow";
+}
+
+
+.JFXButton:hover {
+    -fx-background-color: #5495FF;
+    -fx-text-fill: #ffffff;
+}
+
+.tableview .columnheader {
+    -fx-font-family: "Barlow";
+    -fx-font-size: 18pt;
+}
+
+.table-cell {
+     -fx-font-family: "Barlow";
+    -fx-font-size: 13pt;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #5495FF;
+    -fx-text-fill: #ffffff;
+}
+
+#dialog {
+    -fx-border-color:  #2433A2;
+}
+
+
+
+
+

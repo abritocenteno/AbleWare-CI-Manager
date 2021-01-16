@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="voorraadsysteem.MainWindowFXMLController">
+   <children>
+      <BorderPane>
+         <center>
+            <TabPane prefHeight="1000.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Shipments">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane onKeyPressed="#Filter" prefHeight="1018.0" prefWidth="1920.0">
+                                 <children>
+                                    <TableView fx:id="table_main" layoutX="421.0" layoutY="56.0" onMouseClicked="#TableMainMouseClicked" prefHeight="734.0" prefWidth="1373.0">
+                                       <columns>
+                                          <TableColumn fx:id="col_ID" prefWidth="75.0" text="ID" visible="false" />
+                                          <TableColumn fx:id="col_shipnr" prefWidth="149.99996948242188" text="SHIPMENTNUMBER" />
+                                          <TableColumn fx:id="col_shipdate" prefWidth="149.0" text="SHIPMENTDATE" />
+                                          <TableColumn fx:id="col_dim" prefWidth="109.0" text="DIMENSIONS" />
+                                          <TableColumn fx:id="col_sender" prefWidth="75.0" text="SENDER" />
+                                          <TableColumn fx:id="col_sendaddr" prefWidth="219.0" text="SENDERADDRESS" />
+                                          <TableColumn fx:id="col_recipient" prefWidth="114.0" text="RECIPIENT" />
+                                          <TableColumn fx:id="col_recaddr" prefWidth="197.0" text="RECIPIENTADDRESS" />
+                                          <TableColumn fx:id="col_location" prefWidth="115.0" text="LOCATION" />
+                                          <TableColumn fx:id="col_handler" prefWidth="87.0" text="HANDLER" />
+                                          <TableColumn fx:id="col_logged" prefWidth="75.0" text="LOGGED" />
+                                       </columns>
+                                    </TableView>
+                                    <JFXTextField fx:id="idTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="43.0" prefHeight="26.0" prefWidth="26.0" promptText="ID" AnchorPane.leftAnchor="55.0">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="shipNrTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="104.0" promptText="Shipment Number" AnchorPane.leftAnchor="55.0" />
+                                    <JFXDatePicker fx:id="shipDate" defaultColor="#5495ff" layoutX="55.0" layoutY="176.0" promptText="Shipment Date" showWeekNumbers="true" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="dimTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="243.0" prefHeight="73.0" prefWidth="334.0" promptText="Dimensions (LxWxH)" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="sendTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="335.0" prefHeight="73.0" prefWidth="334.0" promptText="Sender Name" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="recTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="531.0" prefHeight="73.0" prefWidth="334.0" promptText="Recipient Name" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="locTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="718.0" promptText="Warehouse Location" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="handleTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="767.0" promptText="Shipment Handler" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="logTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="818.0" promptText="Logged By" AnchorPane.leftAnchor="55.0" />
+                                    <JFXButton fx:id="addBtn" buttonType="RAISED" layoutX="55.0" layoutY="906.0" onAction="#AddNewShipment" style="-fx-background-color: #5495FF;" text="Add Shipment" textFill="WHITE" />
+                                    <JFXButton fx:id="editBtn" buttonType="RAISED" layoutX="191.0" layoutY="906.0" onAction="#EditShipment" style="-fx-background-color: #5495FF;" text="Edit Shipment" textFill="WHITE" />
+                                    <JFXButton fx:id="deleteBtn" buttonType="RAISED" layoutX="325.0" layoutY="906.0" onAction="#DeleteShipment" style="-fx-background-color: #5495FF;" text="Delete Shipment" textFill="WHITE" />
+                                    <JFXButton fx:id="loadBtn" buttonType="RAISED" layoutX="488.0" layoutY="906.0" onAction="#LoadingList" style="-fx-background-color: #5495FF;" text="Send to Loading List" textFill="WHITE" />
+                                    <JFXTextArea fx:id="sendAddrTxt" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="435.0" prefHeight="73.0" prefWidth="334.0" promptText="Sender Address" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="recAddr" focusColor="#2433a2" labelFloat="true" layoutX="55.0" layoutY="623.0" prefHeight="73.0" prefWidth="334.0" promptText="Recipient Address" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="searchFilter" focusColor="#2433a2" labelFloat="true" layoutX="874.0" layoutY="818.0" promptText="Search" />
+                                    <JFXTextField fx:id="loadNumber" focusColor="#2433a2" labelFloat="true" layoutX="421.0" layoutY="818.0" promptText="Assign Loading Number" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Loading List">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane onKeyPressed="#Filter" prefHeight="1018.0" prefWidth="1920.0">
+                                 <children>
+                                    <TableView fx:id="table_load" layoutX="421.0" layoutY="56.0" onMouseClicked="#TableLoadMouseClicked" prefHeight="734.0" prefWidth="1498.0">
+                                       <columns>
+                                          <TableColumn fx:id="col_ID1" prefWidth="75.0" text="ID" visible="false" />
+                                          <TableColumn fx:id="col_shipnr1" prefWidth="149.99996948242188" text="SHIPMENTNUMBER" />
+                                          <TableColumn fx:id="col_shipdate1" prefWidth="149.0" text="SHIPMENTDATE" />
+                                          <TableColumn fx:id="col_dim1" prefWidth="109.0" text="DIMENSIONS" />
+                                          <TableColumn fx:id="col_sender1" prefWidth="75.0" text="SENDER" />
+                                          <TableColumn fx:id="col_sendaddr1" prefWidth="219.0" text="SENDERADDRESS" />
+                                          <TableColumn fx:id="col_recipient1" prefWidth="114.0" text="RECIPIENT" />
+                                          <TableColumn fx:id="col_recaddr1" prefWidth="197.0" text="RECIPIENTADDRESS" />
+                                          <TableColumn fx:id="col_location1" prefWidth="115.0" text="LOCATION" />
+                                          <TableColumn fx:id="col_handler1" prefWidth="87.0" text="HANDLER" />
+                                          <TableColumn fx:id="col_logged1" prefWidth="75.0" text="LOGGED" />
+                                          <TableColumn fx:id="col_load" prefWidth="132.0" text="LOADINGNUMBER" />
+                                       </columns>
+                                    </TableView>
+                                    <JFXTextField fx:id="idTxt1" editable="false" labelFloat="true" layoutX="55.0" layoutY="56.0" promptText="ID" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="shipNrTxt1" labelFloat="true" layoutX="55.0" layoutY="104.0" promptText="Shipment Number" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXDatePicker fx:id="shipDate1" layoutX="55.0" layoutY="176.0" promptText="Shipment Date" showWeekNumbers="true" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="dimTxt1" labelFloat="true" layoutX="55.0" layoutY="243.0" prefHeight="73.0" prefWidth="334.0" promptText="Dimensions (LxWxH)" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="sendTxt1" labelFloat="true" layoutX="55.0" layoutY="335.0" prefHeight="73.0" prefWidth="334.0" promptText="Sender Name" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="recTxt1" labelFloat="true" layoutX="55.0" layoutY="531.0" prefHeight="73.0" prefWidth="334.0" promptText="Recipient Name" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="locTxt1" labelFloat="true" layoutX="55.0" layoutY="718.0" promptText="Warehouse Location" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="handleTxt1" labelFloat="true" layoutX="55.0" layoutY="767.0" promptText="Shipment Handler" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="logTxt1" labelFloat="true" layoutX="55.0" layoutY="818.0" promptText="Logged By" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="sendAddrTxt1" labelFloat="true" layoutX="55.0" layoutY="435.0" prefHeight="73.0" prefWidth="334.0" promptText="Sender Address" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextArea fx:id="recAddr1" labelFloat="true" layoutX="55.0" layoutY="623.0" prefHeight="73.0" prefWidth="334.0" promptText="Recipient Address" visible="false" AnchorPane.leftAnchor="55.0" />
+                                    <JFXTextField fx:id="searchFilter1" labelFloat="true" layoutX="883.0" layoutY="818.0" onKeyPressed="#FilterLoad" promptText="Search" />
+                                    <JFXTextField fx:id="loadNumber1" layoutX="421.0" layoutY="818.0" promptText="Loading Number" visible="false" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
